@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  background-color: #050505;
+  color: white;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+.aurora-gradient {
+  background: radial-gradient(circle at 50% 50%, #4c1d95 0%, #050505 70%);
+  animation: aurora 10s ease infinite alternate;
+}
+
+@keyframes aurora {
+  from { transform: scale(1); filter: hue-rotate(0deg); }
+  to { transform: scale(1.2); filter: hue-rotate(30deg); }
+}
