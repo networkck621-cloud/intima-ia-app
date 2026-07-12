@@ -1512,3 +1512,98 @@ input[type="range"] {
   background: linear-gradient(var(--cor-superficie), var(--cor-superficie)) padding-box,
     linear-gradient(135deg, var(--cor-destaque), var(--cor-destaque-suave)) border-box;
 }
+
+/* ---------- VSL (transição Quiz → Diagnóstico) ---------- */
+
+.vsl-video-wrap {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--cor-superficie);
+}
+
+.vsl-video-wrap video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.vsl-progress-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.vsl-progress-wrap .progress-bar {
+  width: 100%;
+  max-width: 300px;
+  margin: 0;
+}
+
+.vsl-progress-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cor-destaque-suave);
+}
+
+/* ---------- Pricing (Diagnóstico) ---------- */
+
+.pricing-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  margin-top: 18px;
+}
+
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: var(--cor-superficie);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 20px 18px;
+}
+
+.pricing-card-featured {
+  border: 1px solid transparent;
+  background: linear-gradient(var(--cor-superficie), var(--cor-superficie)) padding-box,
+    linear-gradient(135deg, var(--cor-destaque), var(--cor-destaque-suave)) border-box;
+}
+
+.pricing-card-badge {
+  margin-bottom: 2px;
+}
+
+.pricing-card-label {
+  font-size: 13px;
+  color: var(--cor-texto-secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pricing-card-price {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--cor-texto);
+}
+
+.pricing-card-period {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cor-texto-terciario);
+  margin-left: 4px;
+}
+
+.pricing-card-btn {
+  margin-top: 8px;
+  text-decoration: none;
+}

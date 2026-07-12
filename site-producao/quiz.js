@@ -261,7 +261,7 @@ function renderStep() {
 
   if (stepIndex >= steps.length) {
     progressFill.style.width = "100%";
-    window.location.href = "/analysis.html";
+    window.location.href = "/vsl.html";
     return;
   }
 

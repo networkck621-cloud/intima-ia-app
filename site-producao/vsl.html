@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Intima IA — Preparando seu Diagnóstico</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="logo">Intima<span>IA</span></div>
+    </header>
+
+    <main class="screen screen-centered" id="vsl-root">
+      <div class="vsl-video-wrap">
+        <video
+          id="vsl-video"
+          src="/assets/vsl/vsl.mp4"
+          autoplay
+          muted
+          playsinline
+          controls
+        ></video>
+      </div>
+
+      <h1 class="title" id="vsl-headline" style="font-size: 20px;"></h1>
+      <p class="subtitle" id="vsl-subtitle"></p>
+
+      <div class="vsl-progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill" id="vsl-progress-fill" style="width: 0%;"></div>
+        </div>
+        <span class="vsl-progress-label" id="vsl-progress-label">0%</span>
+      </div>
+    </main>
+  </div>
+
+  <script src="state.js"></script>
+  <script src="content.js"></script>
+  <script src="vsl.js"></script>
+</body>
+</html>

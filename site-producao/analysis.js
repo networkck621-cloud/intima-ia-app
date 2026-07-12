@@ -1,11 +1,5 @@
 requireAge();
 
-const LOADING_MESSAGES = [
-  "Analisando seu perfil para traçar o melhor plano de ação...",
-  "Identificando seu pilar principal...",
-  "Personalizando sua jornada de transformação...",
-];
-
 const PILAR_LABELS = {
   comunicacao: "Comunicação",
   conexao: "Conexão Emocional",
@@ -20,23 +14,8 @@ function findLabel(list, id) {
 }
 
 const root = document.getElementById("analysis-root");
-const messageEl = document.getElementById("loading-message");
-const barFill = document.getElementById("bar-fill");
 
-let msgIndex = 0;
-const msgInterval = setInterval(() => {
-  msgIndex = (msgIndex + 1) % LOADING_MESSAGES.length;
-  messageEl.style.opacity = "0";
-  setTimeout(() => {
-    messageEl.textContent = LOADING_MESSAGES[msgIndex];
-    messageEl.style.opacity = "1";
-  }, 150);
-}, 800);
-
-setTimeout(() => {
-  clearInterval(msgInterval);
-  showDiagnosis();
-}, 2600);
+showDiagnosis();
 
 function showDiagnosis() {
   const state = getState();
@@ -86,10 +65,27 @@ function showDiagnosis() {
       <p class="subtitle" style="font-size: 14px;">
         Desbloqueie a Intima IA e tenha acesso ao seu plano de ação personalizado.
       </p>
-      <a href="https://pay.cakto.com.br/ind7nbo_944530" target="_blank" class="btn btn-primary" id="checkout-btn"
-         style="margin-top: 10px; text-decoration: none;">
-        Desbloquear por R$ 29,90/mês
-      </a>
+
+      <div class="pricing-cards">
+        <div class="pricing-card pricing-card-featured">
+          <span class="badge pricing-card-badge">Melhor Custo-Benefício</span>
+          <span class="pricing-card-label">Plano Anual</span>
+          <span class="pricing-card-price">R$ 297,00<span class="pricing-card-period">/ano</span></span>
+          <a href="https://pay.cakto.com.br/wxwt4uw" target="_blank" id="checkout-btn-annual"
+             class="btn btn-primary pricing-card-btn">
+            Desbloquear plano anual
+          </a>
+        </div>
+
+        <div class="pricing-card">
+          <span class="pricing-card-label">Plano Mensal</span>
+          <span class="pricing-card-price">R$ 29,90<span class="pricing-card-period">/mês</span></span>
+          <a href="https://pay.cakto.com.br/ind7nbo_944530" target="_blank" id="checkout-btn-monthly"
+             class="btn btn-secondary pricing-card-btn">
+            Desbloquear plano mensal
+          </a>
+        </div>
+      </div>
     </div>
   `;
 
