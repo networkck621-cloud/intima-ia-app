@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Intima IA — Entrar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app auth-splash">
+    <div class="auth-splash-inner">
+      <div class="logo" style="font-size: 26px;">Intima<span>IA</span></div>
+      <h1 class="title" style="margin-top: 20px; font-size: 22px;">Bem-vindo(a) de volta</h1>
+      <p class="subtitle" style="margin-top: 8px;">Digite o e-mail usado na sua assinatura para acessar o chat.</p>
+
+      <div style="margin-top: 32px; width: 100%;">
+        <input
+          type="email"
+          id="auth-email-input"
+          class="text-input"
+          placeholder="Seu e-mail"
+          autocomplete="email"
+        />
+        <button class="btn btn-primary" id="auth-login-btn" style="margin-top: 12px;">Entrar</button>
+        <p id="auth-error" class="auth-error" style="display: none;"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="state.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    initLoginForm();
+  </script>
+</body>
+</html>
+
