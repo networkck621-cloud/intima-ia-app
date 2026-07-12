@@ -117,19 +117,31 @@ function initChat() {
     const dateStr = new Date(conv.created_at).toLocaleDateString("pt-BR", {
       day: "2-digit", month: "short",
     });
-    li.innerHTML = `
-      <span class="sidebar-item-title">${conv.titulo || "Nova Conversa"}</span>
-      <span class="sidebar-item-date">${dateStr}</span>
-      <button class="sidebar-item-del" title="Excluir" data-id="${conv.id}">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
-      </button>
-    `;
+
+    const titleSpan = document.createElement("span");
+    titleSpan.className = "sidebar-item-title";
+    titleSpan.textContent = conv.titulo || "Nova Conversa";
+
+    const dateSpan = document.createElement("span");
+    dateSpan.className = "sidebar-item-date";
+    dateSpan.textContent = dateStr;
+
+    const delBtn = document.createElement("button");
+    delBtn.className = "sidebar-item-del";
+    delBtn.title = "Excluir";
+    delBtn.dataset.id = conv.id;
+    delBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>`;
+
+    li.appendChild(titleSpan);
+    li.appendChild(dateSpan);
+    li.appendChild(delBtn);
+
     li.addEventListener("click", (e) => {
       if (e.target.closest(".sidebar-item-del")) return;
       loadConversation(conv.id);
       closeSidebar();
     });
-    li.querySelector(".sidebar-item-del").addEventListener("click", async (e) => {
+    delBtn.addEventListener("click", async (e) => {
       e.stopPropagation();
       if (!confirm("Excluir esta conversa?")) return;
       await apiDelete(`/api/conversations/${conv.id}`, { email });
@@ -141,10 +153,15 @@ function initChat() {
 
   async function loadSidebarList(query = "") {
     let convs;
-    if (query) {
-      convs = await apiGet(`/api/conversations/search?email=${encodeURIComponent(email)}&q=${encodeURIComponent(query)}`);
-    } else {
-      convs = await apiGet(`/api/conversations?email=${encodeURIComponent(email)}`);
+    try {
+      if (query) {
+        convs = await apiGet(`/api/conversations/search?email=${encodeURIComponent(email)}&q=${encodeURIComponent(query)}`);
+      } else {
+        convs = await apiGet(`/api/conversations?email=${encodeURIComponent(email)}`);
+      }
+    } catch (e) {
+      sidebarList.innerHTML = `<li class="sidebar-empty">Não foi possível carregar suas conversas agora.</li>`;
+      return;
     }
     sidebarList.innerHTML = "";
     if (!Array.isArray(convs) || convs.length === 0) {
@@ -262,10 +279,16 @@ function initChat() {
     if (hasImage) {
       const el = document.createElement("div");
       el.className = "message user user-image-msg";
-      el.innerHTML = `
-        <img class="chat-img-thumb" src="${imgPreview.src}" alt="Print enviado" />
-        ${trimmed ? `<p>${trimmed}</p>` : ""}
-      `;
+      const img = document.createElement("img");
+      img.className = "chat-img-thumb";
+      img.src = imgPreview.src;
+      img.alt = "Print enviado";
+      el.appendChild(img);
+      if (trimmed) {
+        const p = document.createElement("p");
+        p.textContent = trimmed;
+        el.appendChild(p);
+      }
       chatEl.appendChild(el);
       chatEl.scrollTop = chatEl.scrollHeight;
     } else {

@@ -49,9 +49,9 @@ function showDiagnosis() {
   const dorLabel = findLabel(dorList, state.dor);
   const nome = state.nome || "Você";
 
-  const diagnosisIntro = isCasal
-    ? `<strong>${nome}</strong>, o diagnóstico de vocês está pronto.`
-    : `<strong>${nome}</strong>, o seu diagnóstico está pronto.`;
+  const diagnosisIntroSuffix = isCasal
+    ? ", o diagnóstico de vocês está pronto."
+    : ", o seu diagnóstico está pronto.";
 
   const diagnosisBody = pilarLabel
     ? `O pilar que mais precisa de atenção agora é <strong>${pilarIcon} ${pilarLabel}</strong>.
@@ -74,7 +74,7 @@ function showDiagnosis() {
 
     <div class="reveal-card" style="animation-delay: 0.25s;">
       <div class="diagnosis-card gradient-border">
-        ${diagnosisIntro}
+        <strong id="diag-nome"></strong><span id="diag-intro-suffix"></span>
         <br /><br />
         ${diagnosisBody}
         <br /><br />
@@ -92,4 +92,7 @@ function showDiagnosis() {
       </a>
     </div>
   `;
+
+  document.getElementById("diag-nome").textContent = nome;
+  document.getElementById("diag-intro-suffix").textContent = diagnosisIntroSuffix;
 }
