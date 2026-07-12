@@ -1593,7 +1593,7 @@ input[type="range"] {
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  color: var(--cor-destaque-suave);
+  color: var(--cor-destaque);
 }
 
 .pricing-benefit-icon svg {
@@ -1637,6 +1637,12 @@ input[type="range"] {
   color: var(--cor-texto-secundario);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+.pricing-card-price-note {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cor-texto-terciario);
 }
 
 .pricing-card-price {

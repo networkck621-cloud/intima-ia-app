@@ -77,7 +77,8 @@ function showDiagnosis() {
 
         <div class="pricing-cards">
           <div class="pricing-card">
-            <span class="pricing-card-label">Mensal</span>
+            <span class="pricing-card-label">Plano Mensal</span>
+            <span class="pricing-card-price-note">R$ 0,99 por dia</span>
             <span class="pricing-card-price">R$ 29,90<span class="pricing-card-period">/mês</span></span>
             <a href="https://pay.cakto.com.br/ind7nbo_944530" target="_blank" id="checkout-btn-monthly"
                class="btn btn-secondary pricing-card-btn">
@@ -88,11 +89,12 @@ function showDiagnosis() {
           <div class="pricing-card pricing-card-featured">
             <span class="badge pricing-card-badge">🏆 Melhor Custo-Benefício</span>
             <span class="pricing-card-label">Anual</span>
+            <span class="pricing-card-price-note">R$ 24,75 por mês</span>
             <span class="pricing-card-price">R$ 297,00<span class="pricing-card-period">/ano</span></span>
             <span class="pricing-card-savings">Economize R$ 61,80</span>
             <a href="https://pay.cakto.com.br/wxwt4uw" target="_blank" id="checkout-btn-annual"
                class="btn btn-primary pricing-card-btn">
-              Desbloquear plano anual
+              LIBERAR MEU ACESSO
             </a>
           </div>
         </div>
