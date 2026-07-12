@@ -1551,12 +1551,61 @@ input[type="range"] {
 
 /* ---------- Pricing (Diagnóstico) ---------- */
 
+.pricing-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  background: linear-gradient(160deg, var(--cor-superficie-alt), var(--cor-superficie));
+  border: 1px solid rgba(var(--cor-destaque-rgb), 0.25);
+  border-radius: 24px;
+  padding: 28px 20px;
+}
+
+.pricing-section-title {
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+  color: var(--cor-texto);
+  margin: 0;
+}
+
+.pricing-benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.pricing-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--cor-texto-secundario);
+}
+
+.pricing-benefit-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--cor-destaque-suave);
+}
+
+.pricing-benefit-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
 .pricing-cards {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 20px;
   width: 100%;
-  margin-top: 18px;
 }
 
 .pricing-card {
@@ -1575,7 +1624,7 @@ input[type="range"] {
 
 .pricing-card-featured {
   border: 1px solid transparent;
-  background: linear-gradient(var(--cor-superficie), var(--cor-superficie)) padding-box,
+  background: linear-gradient(160deg, rgba(var(--cor-destaque-rgb), 0.22), var(--cor-superficie)) padding-box,
     linear-gradient(135deg, var(--cor-destaque), var(--cor-destaque-suave)) border-box;
 }
 
@@ -1603,7 +1652,20 @@ input[type="range"] {
   margin-left: 4px;
 }
 
+.pricing-card-savings {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cor-destaque-suave);
+}
+
 .pricing-card-btn {
   margin-top: 8px;
   text-decoration: none;
+}
+
+.pricing-guarantee {
+  font-size: 12px;
+  color: var(--cor-texto-discreto);
+  text-align: center;
+  margin: 0;
 }

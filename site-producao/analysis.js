@@ -13,6 +13,9 @@ function findLabel(list, id) {
   return found ? found.label.toLowerCase() : "um bloqueio em comum";
 }
 
+const PRICING_CHECK_ICON =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
 const root = document.getElementById("analysis-root");
 
 showDiagnosis();
@@ -62,29 +65,39 @@ function showDiagnosis() {
     </div>
 
     <div class="reveal-card" style="animation-delay: 0.5s;">
-      <p class="subtitle" style="font-size: 14px;">
-        Desbloqueie a Intima IA e tenha acesso ao seu plano de ação personalizado.
-      </p>
+      <div id="pricing-section" class="pricing-section">
+        <h3 class="pricing-section-title">Escolha seu plano e desbloqueie seu potencial</h3>
 
-      <div class="pricing-cards">
-        <div class="pricing-card pricing-card-featured">
-          <span class="badge pricing-card-badge">Melhor Custo-Benefício</span>
-          <span class="pricing-card-label">Plano Anual</span>
-          <span class="pricing-card-price">R$ 297,00<span class="pricing-card-period">/ano</span></span>
-          <a href="https://pay.cakto.com.br/wxwt4uw" target="_blank" id="checkout-btn-annual"
-             class="btn btn-primary pricing-card-btn">
-            Desbloquear plano anual
-          </a>
+        <ul class="pricing-benefits">
+          <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Acesso imediato à Intima IA</li>
+          <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Plano de ação personalizado</li>
+          <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Análise detalhada do seu perfil</li>
+          <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Suporte premium via comunidade</li>
+        </ul>
+
+        <div class="pricing-cards">
+          <div class="pricing-card">
+            <span class="pricing-card-label">Mensal</span>
+            <span class="pricing-card-price">R$ 29,90<span class="pricing-card-period">/mês</span></span>
+            <a href="https://pay.cakto.com.br/ind7nbo_944530" target="_blank" id="checkout-btn-monthly"
+               class="btn btn-secondary pricing-card-btn">
+              Desbloquear plano mensal
+            </a>
+          </div>
+
+          <div class="pricing-card pricing-card-featured">
+            <span class="badge pricing-card-badge">🏆 Melhor Custo-Benefício</span>
+            <span class="pricing-card-label">Anual</span>
+            <span class="pricing-card-price">R$ 297,00<span class="pricing-card-period">/ano</span></span>
+            <span class="pricing-card-savings">Economize R$ 61,80</span>
+            <a href="https://pay.cakto.com.br/wxwt4uw" target="_blank" id="checkout-btn-annual"
+               class="btn btn-primary pricing-card-btn">
+              Desbloquear plano anual
+            </a>
+          </div>
         </div>
 
-        <div class="pricing-card">
-          <span class="pricing-card-label">Plano Mensal</span>
-          <span class="pricing-card-price">R$ 29,90<span class="pricing-card-period">/mês</span></span>
-          <a href="https://pay.cakto.com.br/ind7nbo_944530" target="_blank" id="checkout-btn-monthly"
-             class="btn btn-secondary pricing-card-btn">
-            Desbloquear plano mensal
-          </a>
-        </div>
+        <p class="pricing-guarantee">🔒 Pagamento seguro&nbsp;|&nbsp;Garantia incondicional de 7 dias</p>
       </div>
     </div>
   `;
