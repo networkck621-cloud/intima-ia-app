@@ -78,7 +78,7 @@ function initChat() {
 
     quickChipsEl.innerHTML = "";
     moreChipsEl.innerHTML = "";
-    moreChipsEl.style.display = "none";
+    moreChipsEl.classList.remove("expanded");
     suggestionsToggle.classList.remove("open");
 
     suggestions.quick.forEach((text) => quickChipsEl.appendChild(makeSuggestionChip(text)));
@@ -97,11 +97,12 @@ function initChat() {
     suggestionChipsWrap.style.display = "none";
     quickChipsEl.innerHTML = "";
     moreChipsEl.innerHTML = "";
+    moreChipsEl.classList.remove("expanded");
   }
 
   suggestionsToggle.addEventListener("click", () => {
     const isOpen = suggestionsToggle.classList.toggle("open");
-    moreChipsEl.style.display = isOpen ? "flex" : "none";
+    moreChipsEl.classList.toggle("expanded", isOpen);
   });
 
   function promptForImageContext() {
@@ -256,6 +257,7 @@ function initChat() {
 
   // ── Carregar conversa existente ──────────────────────────────────────────
   async function loadConversation(convId) {
+    clearImage(); // evita levar imagem/contexto pendente de outra conversa
     currentConvId = convId;
     isFirstMessage = false;
     history = [];
@@ -288,6 +290,7 @@ function initChat() {
 
   // ── Nova conversa ────────────────────────────────────────────────────────
   async function startNewConversation() {
+    clearImage(); // evita levar imagem/contexto pendente de outra conversa
     history = [];
     isFirstMessage = true;
     chatEl.innerHTML = "";
