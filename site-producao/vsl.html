@@ -16,17 +16,19 @@
       <div class="vsl-video-wrap">
         <iframe
           id="vsl-video"
-          src="https://www.youtube-nocookie.com/embed/HLq_dKNb3gE?controls=1&modestbranding=1&rel=0&disablekb=1&autoplay=1&mute=1&playsinline=1&iv_load_policy=3"
+          src="https://www.youtube.com/embed/HLq_dKNb3gE?enablejsapi=1&autoplay=1&mute=1&playsinline=1&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0&loop=1&playlist=HLq_dKNb3gE"
           title="Intima IA"
           frameborder="0"
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowfullscreen
+          allow="autoplay; encrypted-media"
         ></iframe>
-        <!-- Camada de bloqueio: fica por cima do iframe e absorve o clique,
-             impedindo o redirecionamento pro YouTube. pointer-events precisa
-             ficar "auto" (padrão) aqui — "none" deixaria o clique atravessar
-             pro iframe em vez de bloquear. -->
-        <div class="vsl-video-block" aria-hidden="true"></div>
+        <!-- Camada de bloqueio + toque-para-ouvir: fica por cima do iframe,
+             absorve o clique (impede redirecionar pro YouTube) e, no primeiro
+             toque, desmuta o player via YouTube IFrame API sem reiniciar o
+             vídeo. pointer-events fica no padrão (auto) de propósito — "none"
+             deixaria o clique atravessar pro iframe em vez de bloquear. -->
+        <div class="vsl-video-block" id="vsl-unmute-layer">
+          <span class="vsl-unmute-hint" id="vsl-unmute-hint">🔊 Toque para ouvir</span>
+        </div>
       </div>
 
       <h1 class="title" id="vsl-headline" style="font-size: 20px;"></h1>
@@ -43,6 +45,7 @@
 
   <script src="state.js"></script>
   <script src="content.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script src="vsl.js"></script>
 </body>
 </html>

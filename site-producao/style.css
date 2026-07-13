@@ -1525,10 +1525,17 @@ input[type="range"] {
 
 /* ---------- VSL (transição Quiz → Diagnóstico) ---------- */
 
+/* .subtitle é 15px por padrão (usada em várias telas) — aqui, perto do
+   vídeo, sobe pra 16px mínimo de legibilidade, sem mexer nas outras páginas. */
+#vsl-subtitle {
+  font-size: 16px;
+}
+
 .vsl-video-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: auto;
+  aspect-ratio: 9 / 16; /* vídeo vertical — 16/9 forçava faixas pretas/corte */
   border-radius: 20px;
   overflow: hidden;
   background: var(--cor-superficie);
@@ -1544,13 +1551,42 @@ input[type="range"] {
 }
 
 /* Camada transparente por cima do iframe: precisa manter pointer-events
-   padrão (auto) para capturar o clique e não deixá-lo chegar ao YouTube. */
+   padrão (auto) para capturar o clique e não deixá-lo chegar ao YouTube.
+   touch-action: pan-y permite rolagem vertical normal no mobile — "none"
+   bloquearia até o scroll da página quando o toque começa sobre o vídeo. */
 .vsl-video-block {
   position: absolute;
-  inset: 0;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
   background: transparent;
   cursor: default;
+  touch-action: pan-y;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 24px;
+}
+
+.vsl-unmute-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+
+.vsl-unmute-hint.hidden {
+  opacity: 0;
 }
 
 .vsl-progress-wrap {
@@ -1559,17 +1595,20 @@ input[type="range"] {
   align-items: center;
   gap: 10px;
   width: 100%;
-  margin-top: 8px;
+  margin-top: 20px;
 }
 
+/* Barra mais espessa que o padrão (6px) só nesta tela — alvo confortável
+   pro dedo no mobile, sem alterar a barra fina do quiz em outras páginas. */
 .vsl-progress-wrap .progress-bar {
   width: 100%;
   max-width: 300px;
+  height: 10px;
   margin: 0;
 }
 
 .vsl-progress-label {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--cor-destaque-suave);
 }
