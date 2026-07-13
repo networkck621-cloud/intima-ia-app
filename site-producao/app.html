@@ -47,6 +47,15 @@
       <button type="button" class="img-preview-remove" id="img-remove" aria-label="Remover imagem">✕</button>
     </div>
 
+    <!-- Chips de sugestão de objetivo — aparecem quando falta contexto pra analisar uma imagem -->
+    <div id="suggestion-chips" style="display:none;">
+      <div class="suggestions" id="suggestion-chips-quick"></div>
+      <button type="button" class="suggestions-toggle" id="suggestions-toggle" style="display:none;">
+        Ver mais sugestões <span class="suggestions-toggle-arrow">▾</span>
+      </button>
+      <div class="suggestions" id="suggestion-chips-more" style="display:none;"></div>
+    </div>
+
     <form class="composer" id="composer">
       <!-- Botão de anexo de imagem -->
       <label class="composer-attach" title="Analisar print" aria-label="Anexar imagem">

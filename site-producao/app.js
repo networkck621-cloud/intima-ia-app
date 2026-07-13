@@ -40,6 +40,82 @@ function initChat() {
     imgPreviewBar.style.display = "none";
     imgPreview.src = "";
     imgInput.value = "";
+    resetImageContextPrompt();
+  }
+
+  // ── Contexto obrigatório antes de analisar imagem ────────────────────────
+  // Se a imagem chegar sem objetivo, não chama a IA ainda: pede o contexto
+  // localmente (sem gastar chamada de API) e mantém a imagem guardada até a
+  // pessoa responder — aí sim os dois vão juntos numa única chamada real.
+  const DEFAULT_INPUT_PLACEHOLDER = input.placeholder;
+  const IMAGE_CONTEXT_PLACEHOLDER = "Me conta o que você quer entender com esse print...";
+  const IMAGE_CONTEXT_MESSAGE =
+    "Recebi sua imagem. Como posso te ajudar com ela hoje? O que você gostaria que eu analisasse ou que tipo de esclarecimento busca?";
+
+  const suggestionChipsWrap = document.getElementById("suggestion-chips");
+  const quickChipsEl = document.getElementById("suggestion-chips-quick");
+  const moreChipsEl = document.getElementById("suggestion-chips-more");
+  const suggestionsToggle = document.getElementById("suggestions-toggle");
+
+  let awaitingImageContext = false;
+
+  function makeSuggestionChip(text) {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "suggestion-chip";
+    chip.textContent = text;
+    chip.addEventListener("click", () => {
+      input.value = text;
+      hideSuggestionChips();
+      input.focus();
+    });
+    return chip;
+  }
+
+  function showSuggestionChips() {
+    const userState = getState();
+    const suggestions = getChatSuggestions(userState.userContext);
+
+    quickChipsEl.innerHTML = "";
+    moreChipsEl.innerHTML = "";
+    moreChipsEl.style.display = "none";
+    suggestionsToggle.classList.remove("open");
+
+    suggestions.quick.forEach((text) => quickChipsEl.appendChild(makeSuggestionChip(text)));
+
+    if (suggestions.more && suggestions.more.length) {
+      suggestions.more.forEach((text) => moreChipsEl.appendChild(makeSuggestionChip(text)));
+      suggestionsToggle.style.display = "block";
+    } else {
+      suggestionsToggle.style.display = "none";
+    }
+
+    suggestionChipsWrap.style.display = "block";
+  }
+
+  function hideSuggestionChips() {
+    suggestionChipsWrap.style.display = "none";
+    quickChipsEl.innerHTML = "";
+    moreChipsEl.innerHTML = "";
+  }
+
+  suggestionsToggle.addEventListener("click", () => {
+    const isOpen = suggestionsToggle.classList.toggle("open");
+    moreChipsEl.style.display = isOpen ? "flex" : "none";
+  });
+
+  function promptForImageContext() {
+    if (awaitingImageContext) return; // já pedimos, não repete a cada tentativa
+    awaitingImageContext = true;
+    addMessage(IMAGE_CONTEXT_MESSAGE, "bot");
+    input.placeholder = IMAGE_CONTEXT_PLACEHOLDER;
+    showSuggestionChips();
+  }
+
+  function resetImageContextPrompt() {
+    awaitingImageContext = false;
+    input.placeholder = DEFAULT_INPUT_PLACEHOLDER;
+    hideSuggestionChips();
   }
 
   imgInput.addEventListener("change", () => {
@@ -266,6 +342,15 @@ function initChat() {
 
     // Requer texto OU imagem
     if (!trimmed && !hasImage) return;
+
+    // Imagem sem objetivo: não manda pra IA ainda. Guarda a imagem, pede o
+    // contexto localmente e espera a próxima mensagem pra enviar os dois juntos.
+    if (hasImage && !trimmed) {
+      promptForImageContext();
+      return;
+    }
+
+    resetImageContextPrompt();
 
     // Garante que há uma conversa ativa
     if (!currentConvId) {
