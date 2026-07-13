@@ -14,14 +14,19 @@
 
     <main class="screen screen-centered" id="vsl-root">
       <div class="vsl-video-wrap">
-        <video
+        <iframe
           id="vsl-video"
-          src="/assets/vsl/vsl.mp4"
-          autoplay
-          muted
-          playsinline
-          controls
-        ></video>
+          src="https://www.youtube-nocookie.com/embed/HLq_dKNb3gE?controls=1&modestbranding=1&rel=0&disablekb=1&autoplay=1&mute=1&playsinline=1&iv_load_policy=3"
+          title="Intima IA"
+          frameborder="0"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <!-- Camada de bloqueio: fica por cima do iframe e absorve o clique,
+             impedindo o redirecionamento pro YouTube. pointer-events precisa
+             ficar "auto" (padrão) aqui — "none" deixaria o clique atravessar
+             pro iframe em vez de bloquear. -->
+        <div class="vsl-video-block" aria-hidden="true"></div>
       </div>
 
       <h1 class="title" id="vsl-headline" style="font-size: 20px;"></h1>
