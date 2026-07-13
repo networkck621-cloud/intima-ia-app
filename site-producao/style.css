@@ -546,6 +546,16 @@ a {
   text-align: center;
 }
 
+/* #analysis-root herda .screen-centered, mas o conteúdo (diagnóstico +
+   cards de preço) costuma ser mais alto que a tela. Com justify-content:
+   center num container que rola, o topo do conteúdo overflow fica
+   inacessível/escondido atrás do header. Aqui ele passa a crescer a
+   partir do topo, com um respiro extra abaixo do header. */
+#analysis-root {
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
 .title {
   font-size: 24px;
   font-weight: 800;

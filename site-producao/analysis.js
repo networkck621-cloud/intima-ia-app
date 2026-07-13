@@ -82,8 +82,8 @@ function showDiagnosis() {
             </ul>
 
             <a href="https://pay.cakto.com.br/ind7nbo_944530" target="_blank" id="checkout-btn-monthly"
-               class="btn btn-secondary pricing-card-btn">
-              Desbloquear plano mensal
+               class="btn btn-primary pricing-card-btn">
+              DESBLOQUEAR ACESSO
             </a>
           </div>
 
@@ -102,7 +102,7 @@ function showDiagnosis() {
 
             <a href="https://pay.cakto.com.br/wxwt4uw" target="_blank" id="checkout-btn-annual"
                class="btn btn-primary pricing-card-btn">
-              LIBERAR MEU ACESSO
+              DESBLOQUEAR ACESSO
             </a>
           </div>
         </div>
