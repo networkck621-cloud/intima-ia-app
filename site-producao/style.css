@@ -1573,7 +1573,7 @@ input[type="range"] {
 
 .pricing-benefits {
   list-style: none;
-  margin: 0;
+  margin: 4px 0;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -1586,7 +1586,9 @@ input[type="range"] {
   align-items: center;
   gap: 10px;
   font-size: 14px;
-  color: var(--cor-texto-secundario);
+  line-height: 1.4;
+  color: var(--cor-texto);
+  text-align: left;
 }
 
 .pricing-benefit-icon {
@@ -1622,19 +1624,13 @@ input[type="range"] {
   padding: 20px 18px;
 }
 
-.pricing-card-featured {
-  border: 1px solid transparent;
-  background: linear-gradient(160deg, rgba(var(--cor-destaque-rgb), 0.22), var(--cor-superficie)) padding-box,
-    linear-gradient(135deg, var(--cor-destaque), var(--cor-destaque-suave)) border-box;
-}
-
 .pricing-card-badge {
   margin-bottom: 2px;
 }
 
 .pricing-card-label {
   font-size: 13px;
-  color: var(--cor-texto-secundario);
+  color: var(--cor-texto);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -1642,7 +1638,7 @@ input[type="range"] {
 .pricing-card-price-note {
   font-size: 12px;
   font-weight: 500;
-  color: var(--cor-texto-terciario);
+  color: var(--cor-texto-secundario);
 }
 
 .pricing-card-price {
@@ -1656,12 +1652,6 @@ input[type="range"] {
   font-weight: 500;
   color: var(--cor-texto-terciario);
   margin-left: 4px;
-}
-
-.pricing-card-savings {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--cor-destaque-suave);
 }
 
 .pricing-card-btn {

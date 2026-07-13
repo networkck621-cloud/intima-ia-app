@@ -68,30 +68,38 @@ function showDiagnosis() {
       <div id="pricing-section" class="pricing-section">
         <h3 class="pricing-section-title">Escolha seu plano e desbloqueie seu potencial</h3>
 
-        <ul class="pricing-benefits">
-          <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Acesso imediato à Intima IA</li>
-          <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Plano de ação personalizado</li>
-          <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Análise detalhada do seu perfil</li>
-          <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Suporte premium via comunidade</li>
-        </ul>
-
         <div class="pricing-cards">
           <div class="pricing-card">
             <span class="pricing-card-label">Plano Mensal</span>
             <span class="pricing-card-price-note">R$ 0,99 por dia</span>
             <span class="pricing-card-price">R$ 29,90<span class="pricing-card-period">/mês</span></span>
+
+            <ul class="pricing-benefits">
+              <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Acesso imediato à Intima IA</li>
+              <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Plano de ação personalizado</li>
+              <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Análise detalhada do seu perfil</li>
+              <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Suporte premium via comunidade</li>
+            </ul>
+
             <a href="https://pay.cakto.com.br/ind7nbo_944530" target="_blank" id="checkout-btn-monthly"
                class="btn btn-secondary pricing-card-btn">
               Desbloquear plano mensal
             </a>
           </div>
 
-          <div class="pricing-card pricing-card-featured">
+          <div class="pricing-card">
             <span class="badge pricing-card-badge">🏆 Melhor Custo-Benefício</span>
-            <span class="pricing-card-label">Anual</span>
-            <span class="pricing-card-price-note">R$ 24,75 por mês</span>
-            <span class="pricing-card-price">R$ 297,00<span class="pricing-card-period">/ano</span></span>
-            <span class="pricing-card-savings">Economize R$ 61,80</span>
+            <span class="pricing-card-label">Plano Anual</span>
+            <span class="pricing-card-price-note">R$ 12,25 por mês</span>
+            <span class="pricing-card-price">R$ 147,00<span class="pricing-card-period">/ano</span></span>
+
+            <ul class="pricing-benefits">
+              <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Acesso imediato à Intima IA</li>
+              <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Plano de ação personalizado</li>
+              <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Análise detalhada do seu perfil</li>
+              <li><span class="pricing-benefit-icon">${PRICING_CHECK_ICON}</span>Suporte premium via comunidade</li>
+            </ul>
+
             <a href="https://pay.cakto.com.br/wxwt4uw" target="_blank" id="checkout-btn-annual"
                class="btn btn-primary pricing-card-btn">
               LIBERAR MEU ACESSO
