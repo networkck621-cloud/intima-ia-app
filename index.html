@@ -1,13 +1,88 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>intima-ia</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Intima IA — Hub de Relacionamentos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="logo">Intima<span>IA</span></div>
+    </header>
+
+    <main class="screen screen-centered" style="gap: 24px;">
+      <div class="landing-eyebrow">Hub de Relacionamentos</div>
+
+      <h1 class="title" style="font-size: 26px; line-height: 1.25;">
+        Comunicação, Conexão e Sexualidade — os três pilares de um relacionamento de verdade.
+      </h1>
+
+      <p class="subtitle">
+        Descubra qual área está travando o seu. A Intima IA faz o diagnóstico e acompanha você de um jeito humano, direto e sem julgamento.
+      </p>
+
+      <div class="landing-pillars">
+        <div class="landing-pillar">
+          <span class="landing-pillar-icon">💬</span>
+          <span>Comunicação</span>
+        </div>
+        <div class="landing-pillar">
+          <span class="landing-pillar-icon">🤝</span>
+          <span>Conexão</span>
+        </div>
+        <div class="landing-pillar">
+          <span class="landing-pillar-icon">🔥</span>
+          <span>Sexualidade</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" id="start-btn" style="margin-top: 8px; font-size: 17px; padding: 18px 22px;">
+        Iniciar Quiz Gratuito
+      </button>
+
+      <p class="body-text" style="font-size: 12px; color: var(--cor-texto-discreto);">
+        Conteúdo para maiores de 18 anos. Leva menos de 3 minutos.
+      </p>
+
+      <a href="/login.html" id="subscriber-link" class="landing-subscriber-link">
+        Já sou assinante — entrar no chat
+      </a>
+    </main>
+  </div>
+
+  <div id="age-modal" style="
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+      display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 60;
+    ">
+    <div style="max-width: 380px; background: var(--cor-superficie); border-radius: 18px; padding: 24px; border: 1px solid rgba(var(--cor-destaque-rgb), 0.3); backdrop-filter: blur(10px);">
+      <p class="title" style="font-size: 19px;">Confirme sua idade</p>
+      <p class="subtitle">Este conteúdo aborda sexualidade e relacionamentos e é destinado a pessoas com 18 anos ou mais.</p>
+      <button class="btn btn-primary" id="confirm-age" style="margin-top: 14px;">Tenho 18 anos ou mais</button>
+      <a href="https://www.google.com" class="btn btn-ghost" style="display:block; margin-top: 10px; text-align:center;">Sair</a>
+    </div>
+  </div>
+
+  <script src="state.js"></script>
+  <script>
+    const st = getState();
+    const modal = document.getElementById("age-modal");
+    if (st.ageConfirmed) modal.style.display = "none";
+
+    document.getElementById("confirm-age").addEventListener("click", () => {
+      setState({ ageConfirmed: true });
+      modal.style.display = "none";
+    });
+
+    document.getElementById("start-btn").addEventListener("click", () => {
+      const current = getState();
+      if (!current.ageConfirmed) {
+        modal.style.display = "flex";
+        return;
+      }
+      window.location.href = "/quiz.html";
+    });
+  </script>
+</body>
 </html>
