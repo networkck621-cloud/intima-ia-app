@@ -1525,6 +1525,30 @@ input[type="range"] {
 
 /* ---------- VSL (transição Quiz → Diagnóstico) ---------- */
 
+/* #vsl-root herda .screen-centered, mas o vídeo 9:16 + texto costuma ser
+   mais alto que a tela. Com justify-content: center num container que rola,
+   o topo do conteúdo overflow fica inacessível/escondido atrás do header —
+   mesmo bug já corrigido em #analysis-root. Aqui ele passa a crescer a
+   partir do topo, e o gap entre vídeo/texto/barra fica mais respirado. */
+#vsl-root {
+  justify-content: flex-start;
+  gap: 20px;
+  padding-top: 12px;
+}
+
+/* Header reduzido só na VSL: o vídeo é o protagonista, o header não deve
+   disputar espaço com ele. Mantive um resquício discreto em vez de
+   display:none puro, pra não perder identidade de marca por completo —
+   você tinha aberto essa opção como alternativa aceitável. */
+.vsl-header-compact {
+  padding: 8px 18px;
+  border-bottom: none;
+}
+
+.vsl-header-compact .logo {
+  font-size: 15px;
+}
+
 /* .subtitle é 15px por padrão (usada em várias telas) — aqui, perto do
    vídeo, sobe pra 16px mínimo de legibilidade, sem mexer nas outras páginas. */
 #vsl-subtitle {
@@ -1535,7 +1559,10 @@ input[type="range"] {
   position: relative;
   width: 100%;
   height: auto;
+  max-height: 85vh; /* teto — em telas largas/baixas, a largura encolhe
+                        pra manter 9:16 em vez de estourar horizontalmente */
   aspect-ratio: 9 / 16; /* vídeo vertical — 16/9 forçava faixas pretas/corte */
+  margin: 0 auto;
   border-radius: 20px;
   overflow: hidden;
   background: var(--cor-superficie);
@@ -1595,7 +1622,6 @@ input[type="range"] {
   align-items: center;
   gap: 10px;
   width: 100%;
-  margin-top: 20px;
 }
 
 /* Barra mais espessa que o padrão (6px) só nesta tela — alvo confortável
