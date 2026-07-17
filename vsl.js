@@ -20,8 +20,9 @@ headlineEl.textContent = VSL_HOOKS[segment] || VSL_HOOKS.neutro_solteiro;
 subtitleEl.textContent = VSL_VILAO[gender] || VSL_VILAO.neutro;
 
 const startTime = performance.now();
-let redirected = false;
 
+// Barra só de feedback visual — sem redirecionamento ao chegar em 100%.
+// O usuário decide quando sair da página (planos já visíveis o tempo todo).
 function tick(now) {
   const elapsed = now - startTime;
   const pct = Math.min(100, Math.floor((elapsed / VSL_DURATION_MS) * 100));
@@ -29,13 +30,7 @@ function tick(now) {
   fillEl.style.width = `${pct}%`;
   labelEl.textContent = `${pct}%`;
 
-  if (pct >= 100) {
-    if (!redirected) {
-      redirected = true;
-      window.location.href = "/analysis.html";
-    }
-    return;
-  }
+  if (pct >= 100) return;
 
   requestAnimationFrame(tick);
 }
@@ -78,16 +73,4 @@ if (unmuteLayer) {
     unmuteNow();
     if (unmuteHint) unmuteHint.classList.add("hidden");
   });
-}
-
-// ── Revela os planos após 3 minutos de VSL ──────────────────────────────
-// Fica pouco antes do redirect automático (189s) — combinado como
-// aceitável por enquanto, ver conversa sobre esse timing.
-const PRICING_REVEAL_MS = 180000; // 3min
-const pricingSection = document.getElementById("vsl-pricing-section");
-
-if (pricingSection) {
-  setTimeout(() => {
-    pricingSection.style.display = "flex";
-  }, PRICING_REVEAL_MS);
 }
