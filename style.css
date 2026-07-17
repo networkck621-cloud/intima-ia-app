@@ -1562,6 +1562,10 @@ input[type="range"] {
   max-height: 85vh; /* teto — em telas largas/baixas, a largura encolhe
                         pra manter 9:16 em vez de estourar horizontalmente */
   aspect-ratio: 9 / 16; /* vídeo vertical — 16/9 forçava faixas pretas/corte */
+  flex-shrink: 0; /* item flex com overflow:hidden tem min-size automático
+                      zerado — sem isso, o flexbox encolhe o vídeo até 0px
+                      quando o resto da coluna (planos sempre visíveis) não
+                      cabe na tela */
   margin: 0 auto;
   border-radius: 20px;
   overflow: hidden;
