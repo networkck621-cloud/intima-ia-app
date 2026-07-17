@@ -79,3 +79,15 @@ if (unmuteLayer) {
     if (unmuteHint) unmuteHint.classList.add("hidden");
   });
 }
+
+// ── Revela os planos após 3 minutos de VSL ──────────────────────────────
+// Fica pouco antes do redirect automático (189s) — combinado como
+// aceitável por enquanto, ver conversa sobre esse timing.
+const PRICING_REVEAL_MS = 180000; // 3min
+const pricingSection = document.getElementById("vsl-pricing-section");
+
+if (pricingSection) {
+  setTimeout(() => {
+    pricingSection.style.display = "flex";
+  }, PRICING_REVEAL_MS);
+}

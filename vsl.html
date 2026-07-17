@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>Intima IA – Preparando seu Diagnóstico</title>
-    <link rel="stylesheet" href="/src/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Intima IA — Preparando seu Diagnóstico</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="app">
-        <header class="app-header vsl-header-compact">
-            <div class="logo">Intima<span>IA</span></div>
-        </header>
-        
-        <main class="screen screen-centered" id="vsl-root">
-            <div class="vsl-video-wrap">
+  <div class="app">
+    <header class="app-header vsl-header-compact">
+      <div class="logo">Intima<span>IA</span></div>
+    </header>
+
+    <main class="screen screen-centered" id="vsl-root">
+      <div class="vsl-video-wrap">
         <iframe
           id="vsl-video"
           src="https://www.youtube.com/embed/HLq_dKNb3gE?enablejsapi=1&autoplay=1&mute=1&playsinline=1&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0&loop=1&playlist=HLq_dKNb3gE"
@@ -29,6 +29,52 @@
         <div class="vsl-video-block" id="vsl-unmute-layer">
           <span class="vsl-unmute-hint" id="vsl-unmute-hint">🔊 Toque para ouvir</span>
         </div>
+      </div>
+
+      <!-- Planos: começa oculto, aparece automaticamente aos 3min de VSL (vsl.js) -->
+      <div id="vsl-pricing-section" class="pricing-section" style="display: none;">
+        <h3 class="pricing-section-title">Escolha seu plano e desbloqueie seu potencial</h3>
+
+        <div class="pricing-cards">
+          <div class="pricing-card">
+            <span class="pricing-card-label">Plano Mensal</span>
+            <span class="pricing-card-price-note">R$ 0,99 por dia</span>
+            <span class="pricing-card-price">R$ 29,90<span class="pricing-card-period">/mês</span></span>
+
+            <ul class="pricing-benefits">
+              <li><span class="pricing-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Acesso imediato à Intima IA</li>
+              <li><span class="pricing-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Plano de ação personalizado</li>
+              <li><span class="pricing-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Análise detalhada do seu perfil</li>
+              <li><span class="pricing-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Suporte premium via comunidade</li>
+            </ul>
+
+            <a href="https://pay.cakto.com.br/ind7nbo_944530" target="_blank" id="vsl-checkout-btn-monthly"
+               class="btn btn-primary pricing-card-btn">
+              DESBLOQUEAR ACESSO
+            </a>
+          </div>
+
+          <div class="pricing-card">
+            <span class="badge pricing-card-badge">🏆 Melhor Custo-Benefício</span>
+            <span class="pricing-card-label">Plano Anual</span>
+            <span class="pricing-card-price-note">R$ 12,25 por mês</span>
+            <span class="pricing-card-price">R$ 147,00<span class="pricing-card-period">/ano</span></span>
+
+            <ul class="pricing-benefits">
+              <li><span class="pricing-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Acesso imediato à Intima IA</li>
+              <li><span class="pricing-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Plano de ação personalizado</li>
+              <li><span class="pricing-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Análise detalhada do seu perfil</li>
+              <li><span class="pricing-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Suporte premium via comunidade</li>
+            </ul>
+
+            <a href="https://pay.cakto.com.br/wxwt4uw" target="_blank" id="vsl-checkout-btn-annual"
+               class="btn btn-primary pricing-card-btn">
+              DESBLOQUEAR ACESSO
+            </a>
+          </div>
+        </div>
+
+        <p class="pricing-guarantee">🔒 Pagamento seguro&nbsp;|&nbsp;Garantia incondicional de 7 dias</p>
       </div>
 
       <div class="vsl-progress-wrap">
@@ -50,9 +96,9 @@
     </main>
   </div>
 
- <script src="state.js"></script>
-<script src="content.js"></script>
-<script src="https://www.youtube.com/iframe_api"></script>
-<script src="vsl.js"></script>
+  <script src="state.js"></script>
+  <script src="content.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="vsl.js"></script>
 </body>
 </html>
