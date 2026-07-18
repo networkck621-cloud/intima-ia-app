@@ -57,6 +57,17 @@ function unmuteNow() {
   ytPlayer.playVideo();
 }
 
+// Ao vídeo terminar (ENDED): não repete (o src não tem mais loop/playlist)
+// e rola suavemente até os planos.
+function handlePlayerStateChange(event) {
+  if (event.data === YT.PlayerState.ENDED) {
+    const pricingSection = document.getElementById("vsl-pricing-section");
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+}
+
 // Nome exigido pela YouTube IFrame API — precisa ser uma função global.
 function onYouTubeIframeAPIReady() {
   ytPlayer = new YT.Player("vsl-video", {
@@ -64,6 +75,7 @@ function onYouTubeIframeAPIReady() {
       onReady: function () {
         if (pendingUnmute) unmuteNow();
       },
+      onStateChange: handlePlayerStateChange,
     },
   });
 }
