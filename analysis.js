@@ -114,4 +114,22 @@ function showDiagnosis() {
 
   document.getElementById("diag-nome").textContent = nome;
   document.getElementById("diag-intro-suffix").textContent = diagnosisIntroSuffix;
+
+  // Rastreamento de conversão (Meta CAPI) — disparado no clique do botão,
+  // é o sinal real que temos (o pagamento acontece no site da Cakto, fora
+  // do nosso alcance). InitiateCheckout, não Purchase, pra não inflar
+  // dados de compra que não confirmamos.
+  const monthlyBtn = document.getElementById("checkout-btn-monthly");
+  const annualBtn = document.getElementById("checkout-btn-annual");
+
+  if (monthlyBtn) {
+    monthlyBtn.addEventListener("click", () => {
+      trackConversionEvent("InitiateCheckout", { value: 29.9, currency: "BRL", plan: "monthly" });
+    });
+  }
+  if (annualBtn) {
+    annualBtn.addEventListener("click", () => {
+      trackConversionEvent("InitiateCheckout", { value: 147.0, currency: "BRL", plan: "annual" });
+    });
+  }
 }

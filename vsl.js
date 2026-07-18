@@ -86,3 +86,22 @@ if (unmuteLayer) {
     if (unmuteHint) unmuteHint.classList.add("hidden");
   });
 }
+
+// ── Rastreamento de conversão (Meta CAPI) ────────────────────────────────
+// Dispara no clique do botão — é o sinal real que temos (o pagamento em si
+// acontece no site da Cakto, fora do nosso alcance). Nomeado como
+// InitiateCheckout, não Purchase, pra não inflar dados de compra que não
+// confirmamos.
+const vslMonthlyBtn = document.getElementById("vsl-checkout-btn-monthly");
+const vslAnnualBtn = document.getElementById("vsl-checkout-btn-annual");
+
+if (vslMonthlyBtn) {
+  vslMonthlyBtn.addEventListener("click", () => {
+    trackConversionEvent("InitiateCheckout", { value: 29.9, currency: "BRL", plan: "monthly" });
+  });
+}
+if (vslAnnualBtn) {
+  vslAnnualBtn.addEventListener("click", () => {
+    trackConversionEvent("InitiateCheckout", { value: 147.0, currency: "BRL", plan: "annual" });
+  });
+}
